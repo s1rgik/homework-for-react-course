@@ -1,0 +1,88 @@
+@import '../../sass/variables'
+
+.todo
+    $self: &
+    display: flex
+    align-items: center
+    &:hover
+        & .todo__actions
+            opacity: 0.2
+        &:hover
+            opacity: 1
+    &--loading
+        #{$self}__label
+            border-radius: 50%
+            background-color: $placeholderColor
+            animation: $placeholderAnimation
+        #{$self}__checkbox
+            display: none
+        #{$self}__fakeCheckbox
+            display: none
+        #{$self}__delimiter
+            background-color: $placeholderColor
+            animation: $placeholderAnimation
+        #{$self}__text
+            height: 20px
+            border-radius: 2px
+            background-color: $placeholderColor
+            animation: $placeholderAnimation
+        #{$self}__actions
+            display: none
+    &__label
+        width: 20px
+        height: 20px
+        position: relative
+        cursor: pointer
+    &__checkbox
+        margin: 0
+        width: 100%
+        height: 100%
+        opacity: 0
+        &:checked + .todo__fakeCheckbox
+            background-color: var(--blue)
+            border: 1px solid var(--blue)
+    &__fakeCheckbox
+        position: absolute
+        top: 0
+        right: 0
+        width: 100%
+        height: 100%
+        border: 1px solid #dae1ef
+        border-radius: 50%
+        display: flex
+        align-items: center
+        justify-content: center
+    &__iconInCheckbox
+        width: 12px
+        height: 12px
+        fill: #fff
+    &__delimiter
+        width: 4px
+        border-radius: 2px
+        background-color: var(--blue)
+        margin: 0 15px
+        align-self: stretch
+    &__text
+        flex: 1
+        margin: 0
+    &__actions
+        display: flex
+        align-items: center
+        opacity: 0
+        transition: opacity 0.1s ease-in-out
+    &__iconAction
+        width: 14px
+        cursor: pointer
+        margin-left: 15px
+        transition: opacity 0.1s ease-in-out
+        opacity: 0.5
+        &:hover
+            opacity: 1
+
+@keyframes loading
+    0%
+        opacity: 1
+    50%
+        opacity: 0.6
+    to
+        opacity: 1
