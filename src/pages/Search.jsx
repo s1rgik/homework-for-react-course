@@ -63,14 +63,14 @@ export const Search = ({ history, apiUrl }) => {
       <h2 className="m-0">Результаты поиска по запросу "{searchStr}":</h2>
       {!searchStr && <p className="mt-4 mb-0">Ошибка. Передан пустой запрос</p>}
 
-      {payload === 'loading' && <p className="mt-4 mb-4">Загрузка...</p>}
+      {!posts.length && payload === 'loading' && <p className="mt-4 mb-4">Загрузка...</p>}
 
       {_notFound() && <p className="mt-4 mb-4">Ничего не найдено</p>}
 
       {posts.length > 0 && <PostsList posts={posts} />}
 
       {_showButton() && (
-        <Row className="justify-content-md-center">
+        <Row className="justify-content-center">
           <Button variant="primary" disabled={payload === 'loading'} onClick={nextPage}>
             {payload === 'loading' ? 'Загрузка...' : 'Загрузить еще'}
           </Button>

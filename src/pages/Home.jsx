@@ -42,10 +42,10 @@ export const Home = ({ apiUrl }) => {
 
   return (
     <Row className="d-block m-0 mb-4 mt-4">
-      {payload === 'loading' && <p>Загрузка...</p>}
+      {!posts.length && payload === 'loading' && <p>Загрузка...</p>}
       {posts.length > 0 && <PostsList posts={posts} />}
       {_showButton() && (
-        <Row className="justify-content-md-center">
+        <Row className="justify-content-center">
           <Button
             variant="primary"
             disabled={payload === 'loading'}
