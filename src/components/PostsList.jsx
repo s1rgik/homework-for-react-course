@@ -4,9 +4,15 @@ import Row from 'react-bootstrap/Row';
 
 export const PostsList = ({ posts }) => {
   return (
-    <Row className="justify-content-between m-0 mt-3 mb-3">
+    <div
+      className="mt-3 mb-3"
+      style={{
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr 1fr',
+        gridGap: '16px',
+      }}>
       {posts.map((post) => (
-        <Card key={post.id} className="float-left mt-2 mb-2" style={{ width: '22rem' }}>
+        <Card key={post.id} className="float-left mt-2 mb-2">
           <Card.Img variant="top" src={post.image} />
           <Card.Body>
             <NavLink to={`/post/${post.id}`}>
@@ -17,6 +23,6 @@ export const PostsList = ({ posts }) => {
           <Card.Footer>{post.createdAt}</Card.Footer>
         </Card>
       ))}
-    </Row>
+    </div>
   );
 };
